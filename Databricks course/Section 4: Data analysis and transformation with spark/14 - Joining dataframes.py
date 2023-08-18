@@ -81,6 +81,18 @@ countries_df.join(regions_df, countries_df['REGION_ID']==regions_df['ID'], 'righ
 # COMMAND ----------
 
 # MAGIC %md
+# MAGIC ### Outer join
+
+# COMMAND ----------
+
+# In a pandas dataframe
+employees_df.join(right=dep_df.set_index('id'), on='dept_id', how='outer').display()
+# In a sql dataframe
+countries_df.join(regions_df, countries_df['REGION_ID']==regions_df['ID'], 'outer').select(countries_df['NAME'], countries_df['POPULATION'], regions_df['NAME']).display()
+
+# COMMAND ----------
+
+# MAGIC %md
 # MAGIC ###Task
 # MAGIC 1. Make an inner join con the countries and regions table.
 # MAGIC 2. Display only region name, country name and population
